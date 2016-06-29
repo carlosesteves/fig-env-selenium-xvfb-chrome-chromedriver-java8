@@ -74,4 +74,4 @@ RUN chmod a+x /usr/bin/xvfb-daemon-run
 # Start XVFB on :99
 #=================================
 ENV DISPLAY :99
-CMD ["/etc/init.d/xvfb","start"]
+RUN /etc/init.d/xvfb start

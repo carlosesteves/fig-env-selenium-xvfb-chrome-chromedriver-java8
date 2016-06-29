@@ -70,8 +70,13 @@ RUN chmod a+x /etc/init.d/xvfb
 ADD xvfb-daemon-run /usr/bin/xvfb-daemon-run
 RUN chmod a+x /usr/bin/xvfb-daemon-run
 
-#=================================
-# Start XVFB on :99
-#=================================
-ENV DISPLAY :99
-RUN nohup sh -c '/etc/init.d/xvfb start' &
+## Fix Below, XVFB does not autostart, needs to be invoked pre-script via
+## export DISPLAY=:99
+## sudo /etc/init.d/xvfb start
+## run test
+## sudo /etc/init.d/xvfb stop
+##=================================
+## Start XVFB on :99
+##=================================
+#ENV DISPLAY :99
+#RUN nohup sh -c '/etc/init.d/xvfb start' &

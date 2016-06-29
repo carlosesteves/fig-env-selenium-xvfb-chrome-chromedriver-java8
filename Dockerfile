@@ -2,7 +2,7 @@ FROM te-docker.docker-registry.tools.springer-sbm.com/fig-env-java-8
 
 MAINTAINER Joviano Dias <joviano.dias@springer.com>
 
-# Some Bits from
+# Bits from
 # Jessica Frazelle <jess@docker.com>
 # https://gist.github.com/jterrace/2911875 + Others
 
@@ -65,15 +65,13 @@ ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 #=================================
 # Install XVFB Init Script
 #=================================
-ENV DISPLAY :99
 ADD xvfb_init /etc/init.d/xvfb
 RUN chmod a+x /etc/init.d/xvfb
 ADD xvfb-daemon-run /usr/bin/xvfb-daemon-run
 RUN chmod a+x /usr/bin/xvfb-daemon-run
 
 #=================================
-# Start XVFB
+# Start XVFB on :99
 #=================================
-COPY startup.sh /opt/xvfb/startup.sh
-RUN chmod +x /opt/xvfb/startup.sh
-ENTRYPOINT ["/opt/xvfb/startup.sh"]
+ENV DISPLAY :99
+CMD ["/etc/init.d/xvfb","start"]

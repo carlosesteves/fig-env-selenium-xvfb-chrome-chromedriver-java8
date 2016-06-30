@@ -7,7 +7,7 @@ MAINTAINER Joviano Dias <joviano.dias@springer.com>
 # https://gist.github.com/jterrace/2911875 + Others
 
 RUN apt-get update -y -q
-RUN apt-get install -y -q unzip xvfb psmisc
+RUN apt-get install -y -q unzip xvfb psmisc curl
 
 #=================================
 # Chrome

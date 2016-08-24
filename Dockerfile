@@ -1,4 +1,4 @@
-FROM te-docker.docker-registry.tools.springer-sbm.com/fig-env-java-8
+FROM springernature/fig-env-java-8
 
 MAINTAINER Joviano Dias <joviano.dias@springer.com>
 

@@ -10,6 +10,13 @@ RUN apt-get update -y -q
 RUN apt-get install -y -q unzip xvfb psmisc curl
 
 #=================================
+# Node
+#=================================
+RUN apt-get purge --auto-remove -y node \
+  && curl -sSL https://deb.nodesource.com/setup_6.x | bash - \
+  && apt-get install -y nodejs
+
+#=================================
 # Chrome
 #=================================
 ADD https://dl.google.com/linux/direct/google-talkplugin_current_amd64.deb /src/google-talkplugin_current_amd64.deb
@@ -30,7 +37,6 @@ RUN echo 'deb http://httpredir.debian.org/debian testing main' >> /etc/apt/sourc
 	google-chrome-stable \
 	--no-install-recommends \
 	&& dpkg -i '/src/google-talkplugin_current_amd64.deb' \
-	&& apt-get purge --auto-remove -y curl \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /src/*.deb
 COPY local.conf /etc/fonts/local.conf

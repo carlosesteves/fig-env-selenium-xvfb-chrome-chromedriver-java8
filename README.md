@@ -1,5 +1,6 @@
 A fig-env docker image with
 ----------------------------
+- Node
 - Java 8
 - Chrome
 - Selenium

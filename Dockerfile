@@ -21,7 +21,6 @@ RUN apt-get purge --auto-remove -y node \
 # Chrome
 #=================================
 ADD https://dl.google.com/linux/direct/google-talkplugin_current_amd64.deb /src/google-talkplugin_current_amd64.deb
-#RUN echo 'deb http://httpredir.debian.org/debian testing main' >> /etc/apt/sources.list && \
 RUN apt-get update && apt-get install -y \
 	ca-certificates \
 	curl \
@@ -29,10 +28,7 @@ RUN apt-get update && apt-get install -y \
 	libgl1-mesa-dri \
 	libgl1-mesa-glx \
 	libv4l-0 \
-#	-t testing \
     ttf-ancient-fonts \
-#	fonts-symbola \
-#	--no-install-recommends \
 	&& curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
 	&& echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list \
 	&& apt-get update && apt-get install -y \

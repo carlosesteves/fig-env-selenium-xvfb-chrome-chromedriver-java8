@@ -6,7 +6,7 @@ MAINTAINER Joviano Dias <joviano.dias@springer.com>
 # Jessica Frazelle <jess@docker.com>
 # https://gist.github.com/jterrace/2911875 + Others
 
-RUN apt-get update -y -q
+RUN apt-get update -y -q && apt-get install -y apt-utils && apt-get upgrade -y
 RUN apt-get install -y -q unzip xvfb psmisc curl
 
 #=================================
@@ -14,23 +14,25 @@ RUN apt-get install -y -q unzip xvfb psmisc curl
 #=================================
 RUN apt-get purge --auto-remove -y node \
   && curl -sSL https://deb.nodesource.com/setup_6.x | bash - \
+  && apt-get update -y \
   && apt-get install -y nodejs
 
 #=================================
 # Chrome
 #=================================
 ADD https://dl.google.com/linux/direct/google-talkplugin_current_amd64.deb /src/google-talkplugin_current_amd64.deb
-RUN echo 'deb http://httpredir.debian.org/debian testing main' >> /etc/apt/sources.list && \
-	apt-get update && apt-get install -y \
+#RUN echo 'deb http://httpredir.debian.org/debian testing main' >> /etc/apt/sources.list && \
+RUN apt-get update && apt-get install -y \
 	ca-certificates \
 	curl \
 	hicolor-icon-theme \
 	libgl1-mesa-dri \
 	libgl1-mesa-glx \
 	libv4l-0 \
-	-t testing \
-	fonts-symbola \
-	--no-install-recommends \
+#	-t testing \
+    ttf-ancient-fonts \
+#	fonts-symbola \
+#	--no-install-recommends \
 	&& curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
 	&& echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list \
 	&& apt-get update && apt-get install -y \

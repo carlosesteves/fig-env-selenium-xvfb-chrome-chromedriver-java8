@@ -42,7 +42,8 @@ COPY local.conf /etc/fonts/local.conf
 #==================
 # Chrome Webdriver
 #==================
-ENV CHROME_DRIVER_VERSION 2.22
+CMD (export LATEST_CHROMEDRIVER_VERSION=`curl http://chromedriver.storage.googleapis.com/LATEST_RELEASE`;)
+ENV CHROME_DRIVER_VERSION $LATEST_CHROMEDRIVER_VERSION
 RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip \
   && rm -rf /opt/selenium/chromedriver \
   && unzip /tmp/chromedriver_linux64.zip -d /opt/selenium \

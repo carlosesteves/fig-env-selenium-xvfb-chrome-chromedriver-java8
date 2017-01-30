@@ -12,7 +12,7 @@ RUN apt-get install -y -q unzip xvfb psmisc curl build-essential
 #==================
 # Postgres
 #==================
-RUN apt-get install -y postgresql postgresql-contrib
+RUN apt-get install -y apt-get install postgresql-9.4 postgresql-contrib-9.4
 
 #=================================
 # Node

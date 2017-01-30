@@ -1,6 +1,7 @@
 FROM te-docker.docker-registry.tools.springer-sbm.com/fig-env-java-8
-
 MAINTAINER Joviano Dias <joviano.dias@springer.com>
+
+ENV LAST_UPDATED 2017-01-30
 
 # Bits from
 # Jessica Frazelle <jess@docker.com>

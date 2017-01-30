@@ -9,6 +9,11 @@ MAINTAINER Joviano Dias <joviano.dias@springer.com>
 RUN apt-get update -y -q && apt-get install -y apt-utils && apt-get upgrade -y
 RUN apt-get install -y -q unzip xvfb psmisc curl build-essential
 
+#==================
+# Postgres
+#==================
+RUN apt-get install -y postgresql postgresql-contrib
+
 #=================================
 # Node
 #=================================
@@ -50,11 +55,6 @@ RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.stor
   && mv /opt/selenium/chromedriver /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION \
   && chmod 755 /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION \
   && ln -fs /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION /usr/bin/chromedriver
-
-#==================
-# Postgres
-#==================
-RUN apt-get install postgresql postgresql-contrib
 
 #========================
 # Selenium Configuration

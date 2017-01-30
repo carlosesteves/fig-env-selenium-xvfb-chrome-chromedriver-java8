@@ -51,6 +51,11 @@ RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.stor
   && chmod 755 /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION \
   && ln -fs /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION /usr/bin/chromedriver
 
+#==================
+# Postgres
+#==================
+RUN apt-get install postgresql postgresql-contrib
+
 #========================
 # Selenium Configuration
 #========================

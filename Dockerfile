@@ -81,6 +81,4 @@ ADD xvfb-daemon-run /usr/bin/xvfb-daemon-run
 RUN chmod a+x /usr/bin/xvfb-daemon-run
 
 ## XVFB does not autostart, start it on :99
-CMD (service xvfb start; export DISPLAY=:99;)
-
-CMD service postgresql start
+CMD (service xvfb start; export DISPLAY=:99; service postgresql start;)
